@@ -6,6 +6,11 @@ import { PagesComponent } from './pages.component';
 import { CartComponent } from './cart/cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout/checkout.component';
 import { ProductComponent } from './product/product/product.component';
+import { StoreModule } from '@ngrx/store';
+import { pageReducer } from './store/pages.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PagesEffect } from './store/pages.effect';
+
 
 
 @NgModule({
@@ -17,7 +22,9 @@ import { ProductComponent } from './product/product/product.component';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    StoreModule.forFeature('mypages',pageReducer),
+    EffectsModule.forFeature([PagesEffect])
   ]
 })
 export class PagesModule { }
