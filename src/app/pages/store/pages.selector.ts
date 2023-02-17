@@ -1,5 +1,5 @@
 import { createFeatureSelector } from "@ngrx/store";
-import {Pages} from './pages';
+import {State} from './pages';
 
 
-export const selectPages = createFeatureSelector<Pages[]>('mypages');
+export const selectPages = createFeatureSelector<State[]>('mypages');

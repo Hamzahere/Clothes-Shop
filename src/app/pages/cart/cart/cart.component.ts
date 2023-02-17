@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { invokePagesAPI } from '../../store/pages.action';
+// import { invokePagesAPI } from '../../store/pages.action';
+import { addToCart } from '../../store/pages.action';
+import {map} from 'rxjs';
+import {pipe} from 'rxjs'
 import { selectPages } from '../../store/pages.selector';
 
 @Component({
@@ -9,13 +12,44 @@ import { selectPages } from '../../store/pages.selector';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  // cartObj: { CartItem: { price: number; name: string; quantity: number; }; };
+     cartObj: any;
+
 
   constructor(private store:Store) { }
 
+  cartItem = {
+    item : {
+      price:3,
+      name:"test",
+      quantity:1
+    }}
+
+    cartItemNew = {
+      item : {
+        price:4,
+        name:"test_new",
+        quantity:1
+      }}
+  
   pages$ = this.store.pipe(select(selectPages));
 
+  
+
+  subscription = this.pages$.subscribe(x => console.log(x[0]));
+
+  subscription_new = this.pages$.subscribe((x) => {
+    let obj = {...x[0]};
+    console.log(obj);
+    this.cartObj = obj;
+    return obj;
+  });
+
   ngOnInit(): void {
-    this.store.dispatch(invokePagesAPI())
+    this.store.dispatch(addToCart(this.cartItem))
+    this.store.dispatch(addToCart(this.cartItemNew))
+
+
   }
   
   /*
