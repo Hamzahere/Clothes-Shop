@@ -1,14 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
-import { Pages } from './pages';
-import { pagesFetchAPISuccess } from './pages.action';
+import { State } from './pages';
+// import { pagesFetchAPISuccess } from './pages.action';
+import { addToCart } from './pages.action';
  
-export const initialState: ReadonlyArray<Pages> = [];
+export const initialState: Array<any> = [];
  
 export const pageReducer = createReducer(
   initialState,
-  on(pagesFetchAPISuccess, (state, { allPages }) => {
-    return allPages;
-  })
+  // on(pagesFetchAPISuccess, (state, { allPages }) => {
+  //   return allPages;
+  // }),
+  on(addToCart, (state, { item }) => {
+    let newState = [...state];
+    newState.unshift(item);
+    return newState;
+  }),
 );
 
 /*

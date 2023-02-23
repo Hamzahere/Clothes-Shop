@@ -58,11 +58,11 @@
 					  <div class="col" *ngFor="let page of pages$ | async">
 						<div class="card">
 						  <div class="card-body">
-							<h5 class="card-title">{{ page.name }}</h5>
+							<h5 class="card-title">{{ cartObj.name }}</h5>
 						  </div>
 						  <ul class="list-group list-group-flush">
-							<li class="list-group-item">{{ page.author }}</li>
-							<li class="list-group-item">${{ page.cost }}</li>
+							 <li class="list-group-item">{{ cartObj.price }}</li>
+							<li class="list-group-item">${{ cartObj.quantity }}</li>
 						  </ul>
 						</div>
 					  </div>

@@ -1,12 +1,18 @@
 import { createAction,props } from "@ngrx/store";
-import { Pages } from "./pages";
+import { State } from "./pages";
+import {CartItem} from './pages';
 
 
-export const invokePagesAPI = createAction(
-    '[Pages API] Invoke Pages Fetch API'
-)
 
-export const pagesFetchAPISuccess = createAction(
-    '[Pages API] Fetch API Success',
-    props<{ allPages: Pages[] }>()
+// export const invokePagesAPI = createAction(
+//     '[Pages API] Invoke Pages Fetch API'
+// )
+// export const pagesFetchAPISuccess = createAction(
+//     '[Pages API] Fetch API Success',
+//     props<{ allPages: State[] }>()
+//   );
+
+  export const addToCart = createAction(
+    '[Item Addition ] Adding Item to a cart',
+    props<{ item: CartItem }>()
   );

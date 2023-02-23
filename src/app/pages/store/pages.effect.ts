@@ -3,7 +3,6 @@ import { Actions,createEffect,ofType } from "@ngrx/effects";
 import {select,Store} from '@ngrx/store';
 import {EMPTY,map,mergeMap,withLatestFrom} from 'rxjs';
 import { PagesService } from "../pages.service";
-import { pagesFetchAPISuccess,invokePagesAPI } from "./pages.action";
 import { selectPages } from "./pages.selector";
 
 @Injectable()
@@ -14,20 +13,22 @@ export class PagesEffect {
         private store:Store
     ){}
 
-    loadAllPages$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(invokePagesAPI),
-      withLatestFrom(this.store.pipe(select(selectPages))),
-      mergeMap(([, pageformStore]) => {
-        if (pageformStore.length > 0) {
-          return EMPTY;
-        }
-        return this.pagesService
-          .get()
-          .pipe(map((data) => pagesFetchAPISuccess({ allPages: data })));
-      })
-    )
-  );
+  //   loadAllPages$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(invokePagesAPI),
+  //     withLatestFrom(this.store.pipe(select(selectPages))),
+  //     mergeMap(([, pageformStore]) => {
+  //       if (pageformStore.length > 0) {
+  //         return EMPTY;
+  //       }
+  //       return this.pagesService
+  //         .get()
+  //         .pipe(map((data) => pagesFetchAPISuccess({ allPages: data })));
+  //     })
+  //   )
+  // );
+
+  
    /*
    (Line: 2) Injected the 'Actions' service that loads from the 
   '@ngrx/effects'
