@@ -5,6 +5,7 @@ import { addToCart } from '../../store/pages.action';
 import {map} from 'rxjs';
 import {pipe} from 'rxjs'
 import { selectPages } from '../../store/pages.selector';
+import { CartProducts } from 'src/app/types/type';
 
 @Component({
   selector: 'app-cart',
@@ -14,6 +15,9 @@ import { selectPages } from '../../store/pages.selector';
 export class CartComponent implements OnInit {
   // cartObj: { CartItem: { price: number; name: string; quantity: number; }; };
      cartObj: any;
+     cartProducts : Array<CartProducts> = [{name:"juice",price:20,imageUrl:"assets/images/111.jpg",quantity:2},
+
+     {name:"chips",price:30,imageUrl:"assets/images/111.jpg",quantity:2},{name:"meat",price:40,imageUrl:"assets/images/111.jpg",quantity:1}]
 
 
   constructor(private store:Store) { }
