@@ -7,6 +7,17 @@ body{
 	justify-content: center;
 	align-items: center;
 }
+.card{
+	margin-bottom: 8px;
+}
+
+.img-div{
+	height: 20px;
+}
+
+img{
+	height: 100px;
+}
 
 .CartContainer{
 	width: 70%;
