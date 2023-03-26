@@ -12,6 +12,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { pageReducer } from './store/pages.reducer';
+import { PagesEffect } from './store/pages.effect';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     SlickCarouselModule,
     StoreModule.forRoot({}, {}),
+    StoreModule.forFeature('mypages',pageReducer),
+    EffectsModule.forFeature([PagesEffect]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     HttpClientModule

@@ -6,11 +6,62 @@
       "author": "typicode"
     }
   ],
-  "comments": [
+  "New_Arrivals_Front": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Floral Kirby",
+      "price": 329.10,
+      "image":"assets/images/322.jpg",
+      "sale":true
+    },
+    {
+      "id": 2,
+      "name": "Open knit switer",
+      "price": 29.10,
+      "image":"assets/images/111.jpg",
+      "sale":false
+    },
+    {
+      "id": 3,
+      "name": "Official trendy",
+      "price": 350.00,
+      "image":"assets/images/222.jpg",
+      "sale":true
+    },
+    {
+      "id": 4,
+      "name": "Frock short",
+      "price": 249,
+      "image":"assets/images/322.jpg",
+      "sale":false
+    },
+    {
+      "id": 5,
+      "name": "Sleeve dress",
+      "price": 59.10,
+      "image":"assets/images/444.jpg",
+      "sale":false
+    },
+    {
+      "id": 6,
+      "name": "Stylish dress",
+      "price": 99.00,
+      "image":"assets/images/322.jpg",
+      "sale":false
+    },
+    {
+      "id": 7,
+      "name": "Body suite",
+      "price": 329.10,
+      "image":"assets/images/111.jpg",
+      "sale":false
+    },
+    {
+      "id": 8,
+      "name": "Sleeve linen shirt",
+      "price": 150,
+      "image":"assets/images/222.jpg",
+      "sale":false
     }
   ],
   "profile": {
