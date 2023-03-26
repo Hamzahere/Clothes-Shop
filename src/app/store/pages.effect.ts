@@ -1,9 +1,10 @@
 import {Injectable} from "@angular/core";
 import { Actions,createEffect,ofType } from "@ngrx/effects";
 import {select,Store} from '@ngrx/store';
-import {EMPTY,map,mergeMap,withLatestFrom} from 'rxjs';
-import { PagesService } from "../pages.service";
+import {catchError, EMPTY,exhaustMap,map,mergeMap,withLatestFrom} from 'rxjs';
+import { PagesService } from "../pages/pages.service";
 import { selectPages } from "./pages.selector";
+import {invokePagesAPI,pagesFetchAPISuccess} from './pages.action';
 
 @Injectable()
 export class PagesEffect {
@@ -13,14 +14,30 @@ export class PagesEffect {
         private store:Store
     ){}
 
+
+    pagesEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(invokePagesAPI),
+    exhaustMap(() => this.pagesService.get()
+    .pipe(
+      map((data) =>{
+        console.log("DATA ===>>> ", data)
+      return (pagesFetchAPISuccess({ allPages: data }))
+    }),
+      catchError(()=>EMPTY)
+    )
+    
+    )
+  )
+  );
+  
   //   loadAllPages$ = createEffect(() =>
   //   this.actions$.pipe(
   //     ofType(invokePagesAPI),
   //     withLatestFrom(this.store.pipe(select(selectPages))),
   //     mergeMap(([, pageformStore]) => {
-  //       if (pageformStore.length > 0) {
-  //         return EMPTY;
-  //       }
+  //       // if (pageformStore.length > 0) {
+  //       //   return EMPTY;
+  //       // }
   //       return this.pagesService
   //         .get()
   //         .pipe(map((data) => pagesFetchAPISuccess({ allPages: data })));

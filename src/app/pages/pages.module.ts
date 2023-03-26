@@ -7,9 +7,9 @@ import { CartComponent } from './cart/cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout/checkout.component';
 import { ProductComponent } from './product/product/product.component';
 import { StoreModule } from '@ngrx/store';
-import { pageReducer } from './store/pages.reducer';
+import { pageReducer } from '../store/pages.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { PagesEffect } from './store/pages.effect';
+import { PagesEffect } from '../store/pages.effect';
 
 
 
@@ -23,8 +23,8 @@ import { PagesEffect } from './store/pages.effect';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    StoreModule.forFeature('mypages',pageReducer),
-    EffectsModule.forFeature([PagesEffect])
+    //StoreModule.forFeature('mypages',pageReducer),
+   // EffectsModule.forFeature([PagesEffect])
   ]
 })
 export class PagesModule { }

@@ -4,6 +4,14 @@ export interface State {
         price:number;
         name:string;
         quantity:number;
+    },
+    NewArrival:{
+        id:number;
+        image:string;
+        name:string;
+        price:number;
+        sale:boolean;
+
     }
 }
 
