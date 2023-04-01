@@ -69,6 +69,10 @@ export class CartComponent implements OnInit,AfterViewInit {
     let subscription_new = this.pages$.subscribe((x) => {
       //let obj = {...x[0]};
       console.log(x);
+      let cartItems = x['CartItem'];
+      this.cartProducts = cartItems;
+      console.log(cartItems);
+      
       return x;
     });
   }

@@ -44,7 +44,8 @@ export class HomeComponent implements OnInit {
       item:{
         price:singleProduct.price,
         name:singleProduct.name,
-        quantity:1
+        quantity:1,
+        imageUrl:"assets/images/111.jpg"
       }
     }
     this.store.dispatch(addToCart(cartItem))

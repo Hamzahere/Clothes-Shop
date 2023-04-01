@@ -26,23 +26,26 @@ export const pageReducer = createReducer(
     let oldState = {...state};
     let oldStateCarts:Array<any> = oldState['CartItem'];
     console.log("oldStateCarts",oldStateCarts);
-    //oldStateCarts.push(item);
-   //console.log(oldStateCarts,"oldStateCarts");
    let newState;
     if(oldStateCarts == undefined){
        newState = {...state,CartItem :[item]};
     }
     else{
+      let index = oldStateCarts.findIndex(elem => elem.name == item.name);
+      console.log(oldStateCarts[index]);
 
-       newState = {...state,CartItem :[...oldStateCarts,item]};
+      if(oldStateCarts[index] !== undefined){
+
+        const newArray = JSON.parse(JSON.stringify(oldStateCarts)); //making a new array
+        newArray[index].quantity += 1;
+        newState = {...state,CartItem :newArray};
+      }
+      else{
+        newState = {...state,CartItem :[...oldStateCarts,item]};
+      }
     }
-    //let newState = {...state,CartItem :[item]};
-    //newState.unshift(item);
-    //newState
+    
     return newState;
-
-  //   ...state,
-  // CartItem:item
   }),
 );
 
