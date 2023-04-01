@@ -11,12 +11,52 @@ body{
 	margin-bottom: 8px;
 }
 
+.text-color{
+	color: #FEFCFC
+}
+
+.submit-btn{
+	color: #FEFCFC;
+	background-color: #4DE1C1;
+    width: -webkit-fill-available;
+    border: 2px solid #4DE1C1;
+    border-radius: 6px;
+}
+
 .img-div{
 	height: 20px;
 }
 
 img{
 	height: 100px;
+}
+
+label{
+	color: #FEFCFC
+}
+
+div{
+	
+}
+
+input{
+	height: 25px;
+	border-radius: 5px;
+}
+
+.form-container{
+	margin-top: 10px;
+}
+.card-box{
+	border: 2px solid #565ABB;
+    background-color: #565ABB;
+    border-radius: 10px;
+}
+
+.prices-container{
+	display: flex;
+    align-items: end;
+    flex-direction: column;
 }
 
 .CartContainer{

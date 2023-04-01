@@ -19,6 +19,7 @@ export interface CartItem {
         price:number;
         name:string;
         quantity:number;
+        imageUrl:string;
     
 }
 
