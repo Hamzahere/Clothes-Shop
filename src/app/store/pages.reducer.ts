@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { State } from './pages';
- import { pagesFetchAPISuccess } from './pages.action';
+ import { pagesFetchAPISuccess,singleProductAPISuccess } from './pages.action';
 import { addToCart } from './pages.action';
  
 export const initialState: Array<State> = [
@@ -20,6 +20,29 @@ export const pageReducer = createReducer(
   // ...state,
   // NewArrival:allPages
   }),
+
+  //singleProduct
+  on(singleProductAPISuccess, (state, { allPages }) => {
+    let oldState = state;
+    //oldState = {...state,NewArrival:allPages}
+    let newState = {...state,singleProduct:allPages}
+    return newState;
+  
+  // ...state,
+  // NewArrival:allPages
+  }),
+
+
+
+
+
+
+
+
+
+
+
+
   on(addToCart, (state, { item }) => {
     console.log("item",item);
     
@@ -48,6 +71,27 @@ export const pageReducer = createReducer(
     return newState;
   }),
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 (Line: 9-10)In reducer to register action, 

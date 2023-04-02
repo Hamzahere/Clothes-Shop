@@ -4,7 +4,7 @@ import {select,Store} from '@ngrx/store';
 import {catchError, EMPTY,exhaustMap,map,mergeMap,withLatestFrom} from 'rxjs';
 import { PagesService } from "../pages/pages.service";
 import { selectPages } from "./pages.selector";
-import {invokePagesAPI,pagesFetchAPISuccess} from './pages.action';
+import {invokePagesAPI,pagesFetchAPISuccess,singleProductAPISuccess,invokeSingleProductPI} from './pages.action';
 
 @Injectable()
 export class PagesEffect {
@@ -22,6 +22,21 @@ export class PagesEffect {
       map((data) =>{
         console.log("DATA ===>>> ", data)
       return (pagesFetchAPISuccess({ allPages: data }))
+    }),
+      catchError(()=>EMPTY)
+    )
+    
+    )
+  )
+  );
+
+  productEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(invokeSingleProductPI),
+    exhaustMap((action) => this.pagesService.getSingleProduct(action[0])
+    .pipe(
+      map((data) =>{
+        console.log("Single Product ===>>> ", data)
+      return (singleProductAPISuccess({ allPages: data }))
     }),
       catchError(()=>EMPTY)
     )
