@@ -12,4 +12,9 @@ export class PagesService {
   get() {
     return this.http.get<State[]>('http://localhost:3000/New_Arrivals_Front');
   }
+  getSingleProduct(id:any) {
+    console.log(id);
+    
+    return this.http.get<State[]>('http://localhost:3000/'+id);
+  }
 }

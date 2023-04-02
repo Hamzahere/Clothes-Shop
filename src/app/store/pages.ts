@@ -12,6 +12,13 @@ export interface State {
         price:number;
         sale:boolean;
 
+    },
+    singleProduct:{
+        id:number;
+        name:string;
+        description:string;
+        price:number;
+        image:string;
     }
 }
 

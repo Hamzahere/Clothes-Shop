@@ -4,3 +4,10 @@
 
     font-family: 'DM Serif Display', serif;
 }
+
+.addToCartButton{
+    background-color: #757575;
+    color: #FEFCFC;
+    border: 2px solid #757575;
+    margin-left: 12px;
+}

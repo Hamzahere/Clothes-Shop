@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { addToCart,invokePagesAPI} from '../store/pages.action';
+import { addToCart,invokePagesAPI,invokeSingleProductPI} from '../store/pages.action';
 import {selectPages} from '../store/pages.selector';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private store:Store) { }
+  constructor(private store:Store,private router: Router) { }
   homeTest$ = this.store.pipe(select(selectPages));
   newArrivalProducts:any
   //movies$: Observable<any> = this.store.select(state => state);
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(invokePagesAPI());
+    
     console.log(this.homeTest$);
     // this.movies$.subscribe((x)=>{
     //   console.log(x);
@@ -40,6 +42,8 @@ export class HomeComponent implements OnInit {
   
 
   addToCart(singleProduct:any){
+    console.log(singleProduct);
+    
     let cartItem = {
       item:{
         price:singleProduct.price,
@@ -49,6 +53,14 @@ export class HomeComponent implements OnInit {
       }
     }
     this.store.dispatch(addToCart(cartItem))
+  }
+
+  fetchSingleProdDetails(singleProduct:any){
+console.log(singleProduct);
+let stingId = String(singleProduct.id);
+this.store.dispatch(invokeSingleProductPI(stingId));
+this.router.navigate(['/page/product-detail']);
+//routerLink = "/page/product-detail"
   }
 
   //Slider settings

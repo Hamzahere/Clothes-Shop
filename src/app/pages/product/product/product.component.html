@@ -4,7 +4,7 @@
     <div class="col-lg">
       <!--Product Image and Slides Container-->
       <!--Product Image-->
-      <img src="https://picsum.photos/200/300" />
+      <img src = {{singleProduct.image}}/>
     </div>
 
     <div class="col-lg">
@@ -12,10 +12,10 @@
       <div class="row">
         <div class="col-lg product-name">
           <!--Product Name-->
-          Test Product
+          {{singleProduct.name}}
           <div>
             <!--Product Description-->
-            <p>Some Description</p>
+            <p>{{singleProduct.description}}</p>
           </div>
           <div>
             <hr />
@@ -30,8 +30,8 @@
       <div class="row">
         <!--Product Price and Reviews Container -->
         <div class="col-lg product-name">
-          <div>$5.23</div>
-          <div><del>$10</del></div>
+          <div>${{singleProduct.price}}</div>
+          <!-- <div><del>$10</del></div> -->
 
           <div>
             <hr />
@@ -41,6 +41,11 @@
             reviews
             </span></div>
         <!--Logos like heart etc-->
+
+        
+      </div>
+      <div class="row">
+        <button (click)="addToCart(singleProduct)" class="addToCartButton">Add to Cart</button>
       </div>
     </div>
   </div>

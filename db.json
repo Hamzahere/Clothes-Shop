@@ -64,6 +64,20 @@
       "sale":false
     }
   ],
+  "1":{
+    "id":1,
+"name":"Floral Kirby",
+"description":"100% Polyester,Imported,Pull On closure,Dry Clean Onlyom, party dress, guest of the wedding, beaded dress, evening dress, formal dress, special occasion dress3/4 sleeves,Dress length 55 From shoulder",
+ "price":329,
+ "image":"assets/images/322.jpg"
+},
+"8":{
+  "id":8,
+  "name":"Sleeve linen shirt",
+  "description":"Like your classic white shirt but even better, That range of zesty colors means you can refresh your entire rotation in one swoop,Made from long fiber linen",
+ "price":150,
+ "image":"assets/images/222.jpg" },
+
   "profile": {
     "name": "typicode"
   },
