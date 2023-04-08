@@ -27,3 +27,8 @@ export const singleProductAPISuccess = createAction(
     '[Item Addition ] Adding Item to a cart',
     props<{ item: CartItem }>()
   );
+
+  export const removeFromCart = createAction(
+    '[Item Deletion ] Removing Item from cart',
+    props<{ item: CartItem }>()
+  ); 

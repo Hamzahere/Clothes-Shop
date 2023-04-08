@@ -9,6 +9,9 @@
 			<div class="col-sm">{{product.name}}</div>
 			<div class="col-sm">{{product.quantity}}</div>
 			<div class="col-sm">${{product.price}}</div>
+			<div class="col-sm">
+			<a (click)="removeFromCart(product)" class="remove"><i class="tf-ion-close"></i></a>
+		</div>
 		</div>
 	  </div>
 		 </div>

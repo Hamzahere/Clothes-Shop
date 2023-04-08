@@ -10,63 +10,63 @@
       <div class="collapse navbar-collapse " id="main-navbar">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home </a>
+            <a class="nav-link" routerLink = "/">Home </a>
           </li>
   
           <li class="nav-item">
-            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" routerLink = "/">About Us</a>
           </li>
           <!-- Pages -->
           <li class="nav-item dropdown dropdown-slide">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-delay="350"
+            <a class="nav-link dropdown-toggle" routerLink = "/" id="navbarDropdown4" role="button" data-delay="350"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Pages.
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Blog Single</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">404 Page</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a routerLink = "/">About Us</a></li>
+              <li><a routerLink = "/">Blog</a></li>
+              <li><a routerLink = "/">Blog Single</a></li>
+              <li><a routerLink = "/">Contact</a></li>
+              <li><a routerLink = "/">404 Page</a></li>
+              <li><a routerLink = "/">FAQ</a></li>
             </ul>
           </li><!-- /Pages -->
           <!-- / Blog -->
   
           <li class="nav-item dropdown dropdown-slide">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-delay="350"
+            <a class="nav-link dropdown-toggle" routerLink = "/" id="navbarDropdown3" role="button" data-delay="350"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Shop.
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-              <li><a href="#">Shop</a></li>
-              <li><a href="#">Product Details</a></li>
-              <li><a href="#">Checkout</a></li>
-              <li><a href="#">Cart</a></li>
-              <li><a href="#">Confirmation</a></li>
+              <li><a routerLink = "/">Shop</a></li>
+              <li><a routerLink = "/">Product Details</a></li>
+              <li><a routerLink = "/page/cart">Checkout</a></li>
+              <li><a routerLink = "/page/cart">Cart</a></li>
+              <li><a routerLink = "/">Confirmation</a></li>
             </ul>
           </li><!-- / Blog -->
   
           <!-- Account -->
           <li class="nav-item dropdown dropdown-slide">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-delay="350"
+            <a class="nav-link dropdown-toggle" routerLink = "/" id="navbarDropdown5" role="button" data-delay="350"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Account.
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-              <li><a href="#">Dahsboard</a></li>
-              <li><a href="#">Orders</a></li>
-              <li><a href="#">Downloads</a></li>
-              <li><a href="#">Address</a></li>
-              <li><a href="#">Profile Details</a></li>
-              <li><a href="#">Login Page</a></li>
-              <li><a href="#">SignUp Page</a></li>
-              <li><a href="#">Forgot Password</a></li>
+              <li><a routerLink = "/">Dahsboard</a></li>
+              <li><a routerLink = "/">Orders</a></li>
+              <li><a routerLink = "/">Downloads</a></li>
+              <li><a routerLink = "/">Address</a></li>
+              <li><a routerLink = "/">Profile Details</a></li>
+              <li><a routerLink = "/">Login Page</a></li>
+              <li><a routerLink = "/">SignUp Page</a></li>
+              <li><a routerLink = "/">Forgot Password</a></li>
             </ul>
           </li><!-- / Account -->
   
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" routerLink = "/">Contact Us</a>
           </li>
         </ul>
       </div>
@@ -74,31 +74,31 @@
   
       <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
         <li class="list-inline-item">
-          <a href="#" class="search_toggle" id="search-icon"><i class="tf-ion-android-search"></i></a>
+          <a routerLink = "/" class="search_toggle" id="search-icon"><i class="tf-ion-android-search"></i></a>
         </li>
   
         <li class="dropdown cart-nav dropdown-slide list-inline-item">
-          <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
+          <a routerLink = "/page/cart" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
             <i class="tf-ion-android-cart"></i>
           </a>
           <div class="dropdown-menu cart-dropdown">
             <!-- Cart Item -->
-            <div class="media">
+            <div *ngFor="let product of cartProducts" class="media">
               <a href="#">
-                <img class="media-object img- mr-3" src="assets/images/cart-1.jpg" alt="image" />
+                <img class="media-object img- mr-3" src={{product.imageUrl}} alt="image" />
               </a>
               <div class="media-body">
-                <h6>Ladies Bag</h6>
+                <h6>{{product.name}}</h6>
                 <div class="cart-price">
-                  <span>1 x</span>
-                  <span>1250.00</span>
+                  <span>{{product.quantity}} x</span>
+                  <span>{{product.price}}</span>
                 </div>
               </div>
-              <a href="#" class="remove"><i class="tf-ion-close"></i></a>
+              <a (click)="removeFromCart(product)" class="remove"><i class="tf-ion-close"></i></a>
             </div><!-- / Cart Item -->
   
             <!-- Cart Item -->
-            <div class="media">
+            <!-- <div class="media">
               <a href="#">
                 <img class="media-object img-fluid mr-3" src="assets/images/cart-2.jpg" alt="image" />
               </a>
@@ -110,21 +110,22 @@
                 </div>
               </div>
               <a href="#" class="remove"><i class="tf-ion-close"></i></a>
-            </div><!-- / Cart Item -->
+            </div> -->
+            <!-- / Cart Item -->
   
             <div class="cart-summary">
               <span class="h6">Total</span>
-              <span class="total-price h6">$1799.00</span>
+              <span class="total-price h6">$ {{cartTotal}}</span>
   
               <div class="text-center cart-buttons mt-3">
                 <a  class="btn btn-small btn-transparent btn-block" routerLink = "/page/cart">View Cart</a>
                 <!-- <a href="#" class="btn btn-small btn-transparent btn-block">View Cart</a> -->
-                <a href="#" class="btn btn-small btn-main btn-block">Checkout</a>
+                <a routerLink = "/" class="btn btn-small btn-main btn-block">Checkout</a>
               </div>
             </div>
           </div>
         </li>
-        <li class="list-inline-item"><a href="#"><i class="tf-ion-ios-person mr-3"></i></a></li>
+        <li class="list-inline-item"><a routerLink = "/"><i class="tf-ion-ios-person mr-3"></i></a></li>
       </ul>
     </div>
   </nav>

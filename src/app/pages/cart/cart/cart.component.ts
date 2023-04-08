@@ -1,9 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-// import { invokePagesAPI } from '../../store/pages.action';
-import { addToCart,invokePagesAPI } from '../../../store/pages.action';
-import {map} from 'rxjs';
-import {pipe} from 'rxjs'
+import {removeFromCart } from '../../../store/pages.action';
 import { selectPages } from '../../../store/pages.selector';
 import { CartProducts } from 'src/app/types/type';
 
@@ -22,9 +19,6 @@ export class CartComponent implements OnInit,AfterViewInit {
 
   constructor(private store:Store) { }
   ngAfterViewInit(): void {
-    // this.store.dispatch(addToCart(this.cartItemAfterView))
-    // this.store.dispatch(addToCart(this.cartItemAfterView))
-    // this.store.dispatch(addToCart(this.cartItemAfterView))
   }
 
   cartItem = {
@@ -76,16 +70,20 @@ export class CartComponent implements OnInit,AfterViewInit {
       return x;
     });
   }
-  
-  /*
 
-(Line: 12) Inject the 'Store' loads from the '@ngrx/store'.
-(Line: 13) Declared the 'pages$' observable that listens for 
-the changes from the store. Here we use 'selectPages' 
-selector to fetch all the data from the store.
-(Line: 16) Here invoking the 'invokePagesAPI' 
-action method which will invoke ngrx effect that invokes an API call.
+  removeFromCart(singleProduct:any){
+    console.log(singleProduct);
+    
+    let cartItem = {
+      item:{
+        price:singleProduct.price,
+        name:singleProduct.name,
+        quantity:1,
+        imageUrl:singleProduct.image
+      }
+    }
+    this.store.dispatch(removeFromCart(cartItem))
+  }
 
-*/
 
 }
