@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import { Actions,createEffect,ofType } from "@ngrx/effects";
 import {select,Store} from '@ngrx/store';
-import {catchError, EMPTY,exhaustMap,map,mergeMap,withLatestFrom} from 'rxjs';
+import {catchError, EMPTY,exhaustMap,map,mergeMap,switchMap,withLatestFrom} from 'rxjs';
 import { PagesService } from "../pages/pages.service";
 import { selectPages } from "./pages.selector";
 import {invokePagesAPI,pagesFetchAPISuccess,singleProductAPISuccess,invokeSingleProductPI} from './pages.action';
@@ -32,7 +32,7 @@ export class PagesEffect {
 
   productEffect$ = createEffect(() => this.actions$.pipe(
     ofType(invokeSingleProductPI),
-    exhaustMap((action) => this.pagesService.getSingleProduct(action[0])
+    switchMap((action) => this.pagesService.getSingleProduct(action)
     .pipe(
       map((data) =>{
         console.log("Single Product ===>>> ", data)

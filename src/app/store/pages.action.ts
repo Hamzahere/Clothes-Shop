@@ -32,3 +32,13 @@ export const singleProductAPISuccess = createAction(
     '[Item Deletion ] Removing Item from cart',
     props<{ item: CartItem }>()
   ); 
+
+
+  export const checkout = createAction(
+    '[Checkout API] Post'
+)
+export const checkoutSuccess = createAction(
+    '[Checkout API] Post Success',
+    // props<{ allPages: State[] }>()
+    props<any>()
+  );

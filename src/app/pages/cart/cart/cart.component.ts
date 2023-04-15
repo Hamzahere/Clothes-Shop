@@ -3,21 +3,27 @@ import { select, Store } from '@ngrx/store';
 import {removeFromCart } from '../../../store/pages.action';
 import { selectPages } from '../../../store/pages.selector';
 import { CartProducts } from 'src/app/types/type';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit,AfterViewInit {
+  myForm: FormGroup;
+
   // cartObj: { CartItem: { price: number; name: string; quantity: number; }; };
      cartObj: any;
-     cartProducts : Array<CartProducts> = [{name:"juice",price:20,imageUrl:"assets/images/111.jpg",quantity:2},
+     cartProducts : Array<CartProducts> = [];
 
-     {name:"chips",price:30,imageUrl:"assets/images/111.jpg",quantity:2},{name:"meat",price:40,imageUrl:"assets/images/111.jpg",quantity:1}]
-
-
-  constructor(private store:Store) { }
+  constructor(private store:Store,private fb: FormBuilder) { 
+    this.myForm = this.fb.group({
+      name_on_card: ['', Validators.required],
+      card_number: ['', [Validators.required]],
+      expiry_date: ['', Validators.required],
+      csv: ['', Validators.required],
+    });
+  }
   ngAfterViewInit(): void {
   }
 
@@ -83,6 +89,12 @@ export class CartComponent implements OnInit,AfterViewInit {
       }
     }
     this.store.dispatch(removeFromCart(cartItem))
+  }
+
+  onSubmit(){
+console.log('asas');
+console.log(this.myForm.value);
+
   }
 
 
