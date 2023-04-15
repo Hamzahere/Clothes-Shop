@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  secondNewArrivalProducts: any;
+  homeHeadlines: any;
 
   constructor(private store:Store,private router: Router) { }
   homeTest$ = this.store.pipe(select(selectPages));
@@ -33,7 +35,10 @@ export class HomeComponent implements OnInit {
     // })
     let subscription_new = this.homeTest$.subscribe((x) => {
       //let obj = {...x[0]};
-      this.newArrivalProducts = x['NewArrival'][0];
+      this.newArrivalProducts = x['NewArrival'][0].filter(prod => prod.category == "newArrival");
+      this.secondNewArrivalProducts = x['NewArrival'][0].filter(prod => prod.category == "Second newArrival");
+      this.homeHeadlines = x['NewArrival'][0].filter(prod => prod.category == "Home Headlines");
+      console.log(this.newArrivalProducts);
       console.log(x);
       return x;
     });
@@ -49,18 +54,19 @@ export class HomeComponent implements OnInit {
         price:singleProduct.price,
         name:singleProduct.name,
         quantity:1,
-        imageUrl:"assets/images/111.jpg"
+        imageUrl:singleProduct.image
       }
     }
     this.store.dispatch(addToCart(cartItem))
   }
 
   fetchSingleProdDetails(singleProduct:any){
-console.log(singleProduct);
-let stingId = String(singleProduct.id);
-this.store.dispatch(invokeSingleProductPI(stingId));
+console.log("inside fetchSingleProdDetails");
+
+ let stringId = String(singleProduct.id);
+  this.store.dispatch(invokeSingleProductPI(singleProduct.id));
 this.router.navigate(['/page/product-detail']);
-//routerLink = "/page/product-detail"
+
   }
 
   //Slider settings

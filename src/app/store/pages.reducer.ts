@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { State } from './pages';
  import { pagesFetchAPISuccess,singleProductAPISuccess } from './pages.action';
-import { addToCart } from './pages.action';
+import { addToCart,removeFromCart } from './pages.action';
  
 export const initialState: Array<State> = [
   // {
@@ -32,18 +32,7 @@ export const pageReducer = createReducer(
   // NewArrival:allPages
   }),
 
-
-
-
-
-
-
-
-
-
-
-
-  on(addToCart, (state, { item }) => {
+on(addToCart, (state, { item }) => {
     console.log("item",item);
     
     let oldState = {...state};
@@ -70,7 +59,41 @@ export const pageReducer = createReducer(
     
     return newState;
   }),
+
+
+  on(removeFromCart, (state, { item }) => {
+    console.log("item",item);
+    
+    let oldState = {...state};
+    let oldStateCarts:Array<any> = oldState['CartItem'];
+    console.log("oldStateCarts",oldStateCarts);
+   let newState;
+    
+      let index = oldStateCarts.findIndex(elem => elem.name == item.name);
+      console.log(oldStateCarts[index]);
+
+      //if(oldStateCarts[index] !== undefined){
+
+        const newArray = JSON.parse(JSON.stringify(oldStateCarts)); //making a new array
+        if(newArray[index].quantity > 1){
+
+          newArray[index].quantity -= 1;
+        }
+        else{
+          newArray.splice(index, 1);
+        }
+        newState = {...state,CartItem :newArray};
+      //}
+    
+    
+    return newState;
+  }),
 );
+
+
+
+
+
 
 
 

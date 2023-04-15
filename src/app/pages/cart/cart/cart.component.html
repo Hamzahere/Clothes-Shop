@@ -9,6 +9,9 @@
 			<div class="col-sm">{{product.name}}</div>
 			<div class="col-sm">{{product.quantity}}</div>
 			<div class="col-sm">${{product.price}}</div>
+			<div class="col-sm">
+			<a (click)="removeFromCart(product)" class="remove"><i class="tf-ion-close"></i></a>
+		</div>
 		</div>
 	  </div>
 		 </div>
@@ -31,26 +34,31 @@
   </div>
   <!--Credit Cards boxes end-->
 <div class="form-container">
-	<form>
+	<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 		<div class="form-group">
 			<label for="formGroupExampleInput">Name on card</label>
-			<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-		  </div>
+			<input formControlName="name_on_card" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+			<div *ngIf="myForm.get('name_on_card')?.touched && myForm.get('name_on_card')?.errors?.['required']">Name on card is required</div>
+		</div>
 
 		  <div class="form-group">
 			<label for="formGroupExampleInput">Card Number</label>
-			<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-		  </div>
+			<input formControlName="card_number" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+			<div *ngIf="myForm.get('card_number')?.touched && myForm.get('card_number')?.errors?.['required']">Card number is required</div>
+		</div>
 
 		  <div class="form-row">
 			<div class="form-group col-md-6">
 			  <label for="inputEmail4">Expiration date</label>
-			  <input type="email" class="form-control" id="inputEmail4" placeholder="mm/yy">
+			  <input formControlName="expiry_date" type="email" class="form-control" id="inputEmail4" placeholder="mm/yy">
+			  <div *ngIf="myForm.get('expiry_date')?.touched && myForm.get('expiry_date')?.errors?.['required']">Card number is required</div>
+
 			</div>
 			<div class="form-group col-md-6">
 			  <label for="inputPassword4">CSV</label>
-			  <input type="password" class="form-control" id="inputPassword4" placeholder="123">
-			</div>
+			  <input formControlName="csv" type="password" class="form-control" id="inputPassword4" placeholder="123">
+			  <div *ngIf="myForm.get('csv')?.touched && myForm.get('csv')?.errors?.['required']">Card number is required</div>
+</div>
 		  </div>
 
 		  <div class="container">
@@ -68,7 +76,7 @@
 </div>
 
 		  </div>
-		<button class="submit-btn">Checkout</button>
+		<button type="submit" [disabled]="myForm.invalid" class="submit-btn">Checkout</button>
 	</form>
 </div>
 		 </div>
