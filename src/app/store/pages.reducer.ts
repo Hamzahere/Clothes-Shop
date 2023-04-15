@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { State } from './pages';
- import { pagesFetchAPISuccess,singleProductAPISuccess } from './pages.action';
+ import { pagesFetchAPISuccess,singleProductAPISuccess,checkoutSuccess } from './pages.action';
 import { addToCart,removeFromCart } from './pages.action';
  
 export const initialState: Array<State> = [
@@ -40,7 +40,7 @@ on(addToCart, (state, { item }) => {
     console.log("oldStateCarts",oldStateCarts);
    let newState;
     if(oldStateCarts == undefined){
-       newState = {...state,CartItem :[item]};
+       newState = {...state,CartItem :[item],success: false};
     }
     else{
       let index = oldStateCarts.findIndex(elem => elem.name == item.name);
@@ -50,10 +50,10 @@ on(addToCart, (state, { item }) => {
 
         const newArray = JSON.parse(JSON.stringify(oldStateCarts)); //making a new array
         newArray[index].quantity += 1;
-        newState = {...state,CartItem :newArray};
+        newState = {...state,CartItem :newArray,success: false,};
       }
       else{
-        newState = {...state,CartItem :[...oldStateCarts,item]};
+        newState = {...state,CartItem :[...oldStateCarts,item],success: false,};
       }
     }
     
@@ -88,6 +88,14 @@ on(addToCart, (state, { item }) => {
     
     return newState;
   }),
+
+  on(checkoutSuccess, (state) => {
+    return {
+      ...state,
+      CartItem: [], // clear the CartItem array
+      success: true,
+    };
+  })
 );
 
 

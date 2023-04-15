@@ -65,13 +65,13 @@
 <div class="row">
 	<div class="col-sm-6">
 <div class="text-color">Subtotal</div>
-<div class="text-color">Shipping</div>
-<div class="text-color">Total (Tax incl.)</div>
+<!-- <div class="text-color">Shipping</div>
+<div class="text-color">Total (Tax incl.)</div> -->
 	</div>
 	<div class="col-sm-6 prices-container">
-<div class="text-color">$668</div>
-<div class="text-color">$4</div>
-<div class="text-color">$672</div>
+<div class="text-color">{{total}}</div>
+<!-- <div class="text-color">$4</div>
+<div class="text-color">$672</div> -->
 	</div>
 </div>
 
@@ -81,5 +81,13 @@
 </div>
 		 </div>
 	</div>
-
+	<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-body">
+			<div class="alert alert-success" role="alert" style="border: none;">
+			  Your Order has been placed
+			</div>
+		  </div>    
+		</div>
+	  </div> 
 </div>

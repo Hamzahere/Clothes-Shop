@@ -35,7 +35,8 @@ export const singleProductAPISuccess = createAction(
 
 
   export const checkout = createAction(
-    '[Checkout API] Post'
+    '[Checkout API] Post',
+    props<any>()
 )
 export const checkoutSuccess = createAction(
     '[Checkout API] Post Success',

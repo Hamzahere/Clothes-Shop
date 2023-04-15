@@ -4,7 +4,7 @@ import {select,Store} from '@ngrx/store';
 import {catchError, EMPTY,exhaustMap,map,mergeMap,switchMap,withLatestFrom} from 'rxjs';
 import { PagesService } from "../pages/pages.service";
 import { selectPages } from "./pages.selector";
-import {invokePagesAPI,pagesFetchAPISuccess,singleProductAPISuccess,invokeSingleProductPI} from './pages.action';
+import {invokePagesAPI,pagesFetchAPISuccess,singleProductAPISuccess,invokeSingleProductPI, checkout,checkoutSuccess} from './pages.action';
 
 @Injectable()
 export class PagesEffect {
@@ -43,6 +43,19 @@ export class PagesEffect {
     
     )
   )
+  );
+
+
+  checkoutEffect$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(checkout),
+      exhaustMap(({ data }) =>
+        this.pagesService.checkout(data).pipe(
+          map(() => checkoutSuccess({success:true})),
+          catchError(()=>EMPTY)
+        )
+      )
+    )
   );
 
 }

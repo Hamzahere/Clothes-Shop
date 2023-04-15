@@ -19,7 +19,9 @@ export interface State {
         description:string;
         price:number;
         image:string;
-    }
+    },
+    success:boolean,
+    productAddedtoCart:boolean
 }
 
 export interface CartItem {

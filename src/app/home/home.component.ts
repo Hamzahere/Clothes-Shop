@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private store:Store,private router: Router) { }
   homeTest$ = this.store.pipe(select(selectPages));
   newArrivalProducts:any
+  displayStyle = "none";
   //movies$: Observable<any> = this.store.select(state => state);
   cartItem = {
     item : {
@@ -47,6 +48,10 @@ export class HomeComponent implements OnInit {
   
 
   addToCart(singleProduct:any){
+    this.openPopup();
+    setTimeout(()=>{
+      this.closePopup();
+    },3000)
     console.log(singleProduct);
     
     let cartItem = {
@@ -58,6 +63,13 @@ export class HomeComponent implements OnInit {
       }
     }
     this.store.dispatch(addToCart(cartItem))
+  }
+
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
   }
 
   fetchSingleProdDetails(singleProduct:any){
