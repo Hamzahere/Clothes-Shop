@@ -230,3 +230,15 @@ hr{
 	font-weight: 600;
 	color: #202020;
 }
+
+
+.modal {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  .modal-dialog {
+	max-width: 600px;
+	margin: auto;
+  }

@@ -13,6 +13,10 @@ export class PagesService {
   get() {
     return this.http.get<State[]>(`${environment.baseURL}items`);
   }
+
+  checkout(data){
+    return this.http.post<any>(`${environment.baseURL}checkout`, data);
+  }
   getSingleProduct(actionObj:any) {
     console.log("actionObj",actionObj);
     let copyObj = {...actionObj}
