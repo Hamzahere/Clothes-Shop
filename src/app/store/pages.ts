@@ -21,7 +21,11 @@ export interface State {
         image:string;
     },
     success:boolean,
-    productAddedtoCart:boolean
+    productAddedtoCart:boolean,
+    User:{
+        name:string,
+        email:string
+    }
 }
 
 export interface CartItem {

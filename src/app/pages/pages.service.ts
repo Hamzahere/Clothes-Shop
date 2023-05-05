@@ -17,6 +17,24 @@ export class PagesService {
   checkout(data){
     return this.http.post<any>(`${environment.baseURL}checkout`, data);
   }
+
+  userLogin(data){
+
+    
+    return this.http.post<any>(`${environment.baseURL}users/login`, data);
+  }
+
+  userSignUpAPI(data){
+
+    
+    return this.http.post<any>(`${environment.baseURL}users`, data);
+  }
+
+  userOrder(data){
+
+    
+    return this.http.post<any>(`${environment.baseURL}orders`, data);
+  }
   getSingleProduct(actionObj:any) {
     console.log("actionObj",actionObj);
     let copyObj = {...actionObj}

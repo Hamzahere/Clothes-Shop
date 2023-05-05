@@ -11,6 +11,8 @@ import { pageReducer } from '../store/pages.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PagesEffect } from '../store/pages.effect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './user/user.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 
 
@@ -20,7 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PagesComponent,
     CartComponent,
     CheckoutComponent,
-    ProductComponent
+    ProductComponent,
+    UserComponent,
+    UserOrdersComponent
   ],
   imports: [
     CommonModule,

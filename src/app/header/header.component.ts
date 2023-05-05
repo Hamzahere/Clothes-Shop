@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { selectPages } from '../store/pages.selector';
 import { select, Store } from '@ngrx/store';
 import { CartProducts } from 'src/app/types/type';
@@ -12,10 +12,13 @@ import { removeFromCart} from '../store/pages.action';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,OnDestroy {
 
   cartProducts : Array<CartProducts>
   cartTotal = 0;
+  subscription_new: any;
+  loggedInUser: any;
+  userEmail: any;
   constructor(private store:Store) {
     this.cartProducts = [];
    }
@@ -23,10 +26,14 @@ export class HeaderComponent implements OnInit {
   pages$ = this.store.pipe(select(selectPages));
 
   ngOnInit(): void {
-    let subscription_new = this.pages$.subscribe((x) => {
-      //let obj = {...x[0]};
-      console.log(x);
-      let cartItems = x['CartItem'];
+    this.subscription_new = this.pages$.subscribe((currentState) => {
+      //let obj = {...currentState[0]};
+      console.log("header COmpoents state subscription",currentState);
+      let cartItems = currentState['CartItem'];
+      this.loggedInUser = currentState['User'];
+      this.userEmail = this.loggedInUser?.['user']?.email;
+      console.log("this.loggedInUser",this.loggedInUser);
+      
       this.cartProducts = cartItems;
       console.log(cartItems);
       
@@ -35,7 +42,7 @@ export class HeaderComponent implements OnInit {
 
 
 
-      return x;
+      return currentState;
     });
   }
 
@@ -52,6 +59,12 @@ export class HeaderComponent implements OnInit {
       }
     }
     this.store.dispatch(removeFromCart(cartItem))
+  }
+
+  ngOnDestroy(){
+if(this.subscription_new){
+  this.subscription_new.unsubscribe();
+}
   }
 
 }

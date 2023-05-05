@@ -43,3 +43,33 @@ export const checkoutSuccess = createAction(
     // props<{ allPages: State[] }>()
     props<any>()
   );
+
+  export const userLogin = createAction(
+    '[Login API] Post',
+    props<any>()
+)
+
+export const userLoginSuccess = createAction(
+  '[Login API] Post Success',
+  props<any>()
+)
+
+export const userSignUp = createAction(
+  '[SignUp API] Post',
+  props<any>()
+)
+export const userSignUpSuccess = createAction(
+'[SignUp API] Post Success',
+props<any>()
+)
+
+
+export const userOrders = createAction(
+  '[userOrders API] Post',
+  props<any>()
+)
+
+export const userOrdersSuccess = createAction(
+  '[userOrders API] Post Success',
+  props<any>()
+)
