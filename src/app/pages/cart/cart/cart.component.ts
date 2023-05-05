@@ -147,7 +147,7 @@ this.checkoutOrder()
 
     console.log(checkoutObject);
     
-    this.store.dispatch(checkout(checkoutObject))
+    this.store.dispatch(checkout({data:checkoutObject}))
   }
 
 

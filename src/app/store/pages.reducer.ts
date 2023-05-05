@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { State } from './pages';
- import { pagesFetchAPISuccess,singleProductAPISuccess,checkoutSuccess } from './pages.action';
+ import { pagesFetchAPISuccess,singleProductAPISuccess,checkoutSuccess, 
+  userLoginSuccess, userOrdersSuccess,userSignUpSuccess } from './pages.action';
 import { addToCart,removeFromCart } from './pages.action';
  
 export const initialState: Array<State> = [
@@ -95,7 +96,12 @@ on(addToCart, (state, { item }) => {
       CartItem: [], // clear the CartItem array
       success: true,
     };
-  })
+  }),
+
+  on(userLoginSuccess, (state, { data }) => ({ ...state, User:data,userLoggedIn:true })),
+  on(userOrdersSuccess, (state, { data }) => ({ ...state, UserOrders:data })),
+  on(userSignUpSuccess, (state, { data }) => ({ ...state, UserSignedUp:data }))
+
 );
 
 

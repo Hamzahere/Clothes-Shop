@@ -55,7 +55,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
               <li><a routerLink = "/">Dahsboard</a></li>
-              <li><a routerLink = "/">Orders</a></li>
+              <li><a routerLink = "/page/user-orders">Orders</a></li>
               <li><a routerLink = "/">Downloads</a></li>
               <li><a routerLink = "/">Address</a></li>
               <li><a routerLink = "/">Profile Details</a></li>
@@ -125,7 +125,22 @@
             </div>
           </div>
         </li>
-        <li class="list-inline-item"><a routerLink = "/"><i class="tf-ion-ios-person mr-3"></i></a></li>
+        <li class="dropdown cart-nav dropdown-slide list-inline-item"><a routerLink = "/"><i class="tf-ion-ios-person mr-3"></i></a>
+        
+          <div class="dropdown-menu cart-dropdown">
+            <div class="cart-summary">
+  
+              <div class="text-center cart-buttons mt-3">
+                <a *ngIf="!loggedInUser" class="btn btn-small btn-transparent btn-block" routerLink = "/page/user">Account</a>
+                <a *ngIf="loggedInUser" class="btn btn-small btn-transparent btn-block" >{{userEmail}}</a>
+                
+                
+              </div>
+            </div>
+            </div>
+        </li>
+     
+     
       </ul>
     </div>
   </nav>

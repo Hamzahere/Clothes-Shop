@@ -1,0 +1,34 @@
+.modal-backdrop{
+    z-index: -1;
+      display:none;
+  }
+
+  .failure-modal .modal-content {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .failure-modal .modal-header {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .failure-modal .modal-footer {
+    justify-content: center;
+  }
+  
+  .failure-modal .btn-secondary {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .failure-modal .btn-secondary:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+
+  .signupModalBtn{
+    position: absolute;
+    left: 150px;
+    bottom: 0px;
+  }

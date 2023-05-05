@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <div class="form-group">
+              <label for="username">Email</label>
+              <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required>
+              <div class="invalid-feedback" *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+                Please enter a valid username.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required>
+              <div class="invalid-feedback" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+                Please enter a valid password.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2" [disabled]="loginForm.invalid">Login</button>
+            
+
+          </form>
+          <button class="btn btn-primary d-inline-block signupModalBtn" data-toggle="modal" data-target="#signupModal">Sign up</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-body">
+			<div class="alert alert-success" role="alert" style="border: none;">
+			  User Logged In Successfull !
+			</div>
+		  </div>    
+		</div>
+	  </div> 
+  
+
+
+    <div class="modal fade" #signUpModalRef id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupModalLabel">Sign up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
+              <div class="form-group">
+                <label for="username">Email</label>
+                <input type="email" class="form-control" id="signupEmail" name="signupEmail" [(ngModel)]="signupEmail" required email>
+                <div class="invalid-feedback" *ngIf="signupForm.controls['signupEmail'].invalid && (signupForm.controls['signupEmail'].dirty || signupForm.controls['signupEmail'].touched)">
+                  Please enter a valid email address.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="signupPassword" name="signupPassword" [(ngModel)]="signupPassword" required minlength="8">
+                <div class="invalid-feedback" *ngIf="signupForm.controls['signupPassword'].invalid && (signupForm.controls['signupPassword'].dirty || signupForm.controls['signupPassword'].touched)">
+                  Please enter a password that is at least 8 characters long.
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Signup</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="modal" #successModal tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleSignUp}" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-body">
+    <div class="alert alert-success" role="alert" style="border: none;">
+      User Sign Up Successfull !
+    </div>
+    </div>    
+  </div>
+  </div> 
+
+  <div class="modal" #failureModal tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyleSignUpFailure}">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">User Sign Up Failed!</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeSignUpFailureModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>An error occurred while signing up. Please try again later.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeSignUpFailureModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
