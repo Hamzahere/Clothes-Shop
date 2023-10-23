@@ -2,6 +2,9 @@
 	<div class="row"> 
 		 <!--Main Container that shows two divs of products and card details in side by side-->
 		 <div class="col-lg">
+	<div *ngIf="!cartProducts">
+		<p class="mt-4 text-md">No products in the cart</p>
+	</div>
       <!--Product Images and details Container-->
 	  <div *ngFor="let product of cartProducts" class="card">
 		<div class="card-body row">
@@ -23,10 +26,10 @@
 <!--Credit Cards boxes-->
 <div class="container">
 	<div class="row">
-	  <div class="col-4" style="background-color: #7073C1;margin-right: 5px; text-align: -webkit-center;">
+	  <div class="col-4" style="margin-right: 5px; text-align: -webkit-center;">
 		<img src="assets/images/master-card.png" style="height: 40px;">
 	  </div>
-	  <div class="col-4" style="background-color: #7073C1; text-align: -webkit-center;">
+	  <div class="col-4" style="text-align: -webkit-center;">
 		<img src="assets/images/visa.png" style="height: 40px;">
 	  </div>
 	  
