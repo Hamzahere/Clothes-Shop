@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { pageReducer } from './store/pages.reducer';
 import { PagesEffect } from './store/pages.effect';
+import { AdsSectionComponent } from './components/ads-section/ads-section.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PagesEffect } from './store/pages.effect';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    AdsSectionComponent
   ],
   imports: [
     BrowserModule,
