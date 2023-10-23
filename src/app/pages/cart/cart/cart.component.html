@@ -2,7 +2,7 @@
 	<div class="row"> 
 		 <!--Main Container that shows two divs of products and card details in side by side-->
 		 <div class="col-lg">
-	<div *ngIf="!cartProducts">
+	<div *ngIf="!cartProducts || cartItems.length == 0">
 		<p class="mt-4 text-md">No products in the cart</p>
 	</div>
       <!--Product Images and details Container-->

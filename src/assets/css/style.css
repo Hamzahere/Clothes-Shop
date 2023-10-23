@@ -1976,7 +1976,8 @@ table.shop_table_responsive {
 }
 
 .cat-item p {
-  font-size: 18px;
+  font-size: 26px;
+  color: deeppink;
 }
 
 .widget-featured-entries h4 {
