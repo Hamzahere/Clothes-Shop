@@ -13,6 +13,7 @@ import { PagesEffect } from '../store/pages.effect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { PaymentsuccessComponent } from './paymentsuccess/paymentsuccess.component';
 
 
 
@@ -24,7 +25,8 @@ import { UserOrdersComponent } from './user-orders/user-orders.component';
     CheckoutComponent,
     ProductComponent,
     UserComponent,
-    UserOrdersComponent
+    UserOrdersComponent,
+    PaymentsuccessComponent
   ],
   imports: [
     CommonModule,

@@ -49,6 +49,7 @@ export class ProductComponent implements OnInit {
         name: singleProduct.name,
         quantity: 1,
         imageUrl: 'assets/images/111.jpg',
+        price_id: singleProduct.price_id,
       },
     };
     this.store.dispatch(addToCart(cartItem));

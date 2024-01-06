@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart/cart.component';
-import {ProductComponent} from './product/product/product.component';
+import { ProductComponent } from './product/product/product.component';
 import { PagesComponent } from './pages.component';
 import { UserComponent } from './user/user.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { PaymentsuccessComponent } from './paymentsuccess/paymentsuccess.component';
 
 const routes: Routes = [
   { path: '', component: PagesComponent },
@@ -17,13 +18,17 @@ const routes: Routes = [
     component: ProductComponent,
   },
   {
-    path:'user',
-    component:UserComponent
+    path: 'user',
+    component: UserComponent,
   },
   {
-    path:'user-orders',
-    component:UserOrdersComponent
-  }
+    path: 'user-orders',
+    component: UserOrdersComponent,
+  },
+  {
+    path: 'success',
+    component: PaymentsuccessComponent,
+  },
 ];
 
 @NgModule({

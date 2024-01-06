@@ -17,72 +17,10 @@
 		</div>
 		</div>
 	  </div>
+	  <button style="width: 120px;height: 50px;" type="submit" (click)="checkoutOrder()" class="submit-btn">Checkout</button>
 		 </div>
 
-		 <div class="col-lg card-box">
-<!--Card Container-->
-<p style="color:#FEFCFC">Card Details</p>
-<div style="color:#FEFCFC">Card Type</div>
-<!--Credit Cards boxes-->
-<div class="container">
-	<div class="row">
-	  <div class="col-4" style="margin-right: 5px; text-align: -webkit-center;">
-		<img src="assets/images/master-card.png" style="height: 40px;">
-	  </div>
-	  <div class="col-4" style="text-align: -webkit-center;">
-		<img src="assets/images/visa.png" style="height: 40px;">
-	  </div>
-	  
-	</div>
-  </div>
-  <!--Credit Cards boxes end-->
-<div class="form-container">
-	<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-		<div class="form-group">
-			<label for="formGroupExampleInput">Name on card</label>
-			<input formControlName="name_on_card" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-			<div *ngIf="myForm.get('name_on_card')?.touched && myForm.get('name_on_card')?.errors?.['required']">Name on card is required</div>
-		</div>
-
-		  <div class="form-group">
-			<label for="formGroupExampleInput">Card Number</label>
-			<input formControlName="card_number" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-			<div *ngIf="myForm.get('card_number')?.touched && myForm.get('card_number')?.errors?.['required']">Card number is required</div>
-		</div>
-
-		  <div class="form-row">
-			<div class="form-group col-md-6">
-			  <label for="inputEmail4">Expiration date</label>
-			  <input formControlName="expiry_date" type="email" class="form-control" id="inputEmail4" placeholder="mm/yy">
-			  <div *ngIf="myForm.get('expiry_date')?.touched && myForm.get('expiry_date')?.errors?.['required']">Card number is required</div>
-
-			</div>
-			<div class="form-group col-md-6">
-			  <label for="inputPassword4">CSV</label>
-			  <input formControlName="csv" type="password" class="form-control" id="inputPassword4" placeholder="123">
-			  <div *ngIf="myForm.get('csv')?.touched && myForm.get('csv')?.errors?.['required']">Card number is required</div>
-</div>
-		  </div>
-
-		  <div class="container">
-<div class="row">
-	<div class="col-sm-6">
-<div class="text-color">Subtotal</div>
-<!-- <div class="text-color">Shipping</div>
-<div class="text-color">Total (Tax incl.)</div> -->
-	</div>
-	<div class="col-sm-6 prices-container">
-<div class="text-color">{{total}}</div>
-<!-- <div class="text-color">$4</div>
-<div class="text-color">$672</div> -->
-	</div>
-</div>
-
-		  </div>
-		<button type="submit" [disabled]="myForm.invalid" class="submit-btn">Checkout</button>
-	</form>
-</div>
-		 </div>
+		
 	</div>
 	<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
 		<div class="modal-dialog" role="document">
